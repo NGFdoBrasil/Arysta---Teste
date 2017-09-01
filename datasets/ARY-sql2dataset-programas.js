@@ -18,17 +18,26 @@ function createDataset(fields, constraints, sortFields) {
 	
 	var description_program = findConstraint("desciption_program",constraints,"");
 	
+
+	
+	log.info("### indice   :" + indice);
+	log.info("### cod_usuario   :" + cod_usuario);
+	log.info("### cod_grupo   :" + cod_grupo);
+	log.info("### cod_modulo   :" + cod_modulo);
+	log.info("### cod_program   :" + cod_program);
+	log.info("### description_program   :" + description_program);
+
+	
+	
+
 	var arq = arqMarvinLoad("v1", {
 		sql: "com.arquimeda.marvin.server.js.Sql-v1"
 	});
-	
-	 
-	    
 
-	    //var script = "SELECT cod_program, description_program, obs_upc FROM z_ary_programs";
-	    var script = "select * from  (select  cod_program, description_program, obs_upc , "+
-	                    "rownum as rownum_ from z_ary_programs ) "+
-	                    "where rownum_ between (10 +1) and (10 + 20)"; 
+	 //var script = "SELECT cod_program, description_program, obs_upc FROM z_ary_programs";
+    var script = "select * from  (select  cod_program, description_program, obs_upc , "+
+                    "rownum as rownum_ from z_ary_programs ) "+
+                    "where rownum_ between (10 +1) and (10 + 20)";
 	
 	if (cod_usuario != ""){
 		script = "SELECT prog.cod_program, prog.description_program, prog.obs_upc FROM z_ary_programs prog " +
@@ -57,6 +66,7 @@ function createDataset(fields, constraints, sortFields) {
 	if (description_program != ""){
 		script = "SELECT cod_program, description_program, obs_upc FROM z_ary_programs WHERE description_program LIKE '%"+ description_program + "%' AND ROWNUM > 30 ";
 	}
+	
 	log.info('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
 	log.info('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
 	log.info('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
