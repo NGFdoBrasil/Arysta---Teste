@@ -120,6 +120,40 @@
 #contaUser {
   color: red;
 }
+
+button.valordoDia {
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 15px;
+ color: #050505;
+ padding: 10px 20px;
+ background: -moz-linear-gradient(
+  top,
+  #D6D6D6 0%,
+  #ffffff 0%,
+  #c0c0c0);
+ background: -webkit-gradient(
+  linear, left top, left bottom,
+  from(#D6D6D6),
+  color-stop(0.0, #ffffff),
+  to(#d6d6d6));
+ -moz-border-radius: 10px;
+ -webkit-border-radius: 10px;
+ border-radius: 10px;
+ border: 1px solid #a69fa6;
+ -moz-box-shadow:
+  0px 1px 3px rgba(000,000,000,0.5),
+  inset 0px 0px 48px rgba(192,192,192,1);
+ -webkit-box-shadow:
+  0px 1px 3px rgba(000,000,000,0.5),
+  inset 0px 0px 48px rgba(192,192,192,1);
+ box-shadow:
+  0px 1px 3px rgba(000,000,000,0.5),
+  inset 0px 0px 48px rgba(192,192,192,1);
+ text-shadow:
+  0px -2px 0px rgba(82,69,82,0),
+  0px 1px 0px rgba(255,255,255,1);
+}
+
 </style>
 
 </head>
@@ -127,7 +161,7 @@
   <div class="fluig-style-guide">
     <form name="form" role="form" id="form">
 
-      <input class="hide" type="text" name="cont_aprovador"
+      <input class="" type="text" name="cont_aprovador"
         id="cont_aprovador" /> <input type="text" class="hide"
         name="recebeCod" id="recebeCod"> <input type="text"
         class="hide" name="codDoGrupo" id="codDoGrupo"> <input
@@ -236,23 +270,24 @@
 
           <div class="col-md-6">
             <label for="addGrupo" class="control-label">Programas
-              inclusão</label> <input type="zoom" class="form-control addGrupo"
-              name="addGrupo" id="addGrupo"
+              inclusão</label> <input type="zoom" class="form-control addGrupo" name="addGrupo" id="addGrupo"
               data-zoom="{
-                'displayKey': 'cod_program',
+                'displayKey': 'DESCRIPTION_PROGRAM',
                 'datasetId':'ARY-sql2dataset-programas',
                 'fields':[
                   {
-                    'field':'cod_program',
-                    'label':'Programa',                                                         
-                    'standard':'true'
+                    'field':'COD_PROGRAM',
+                    'label':'Programa' ,
+                    'standard':'true'                                                        
+                    
                   },{
                    'field':'DESCRIPTION_PROGRAM',
                    'filterValues': 'DESCRIPTION_PROGRAM',  
-                   'label':'Desc. Programa' 
+                   'label':'Desc. Programa'
                   }
                 ]
-              }" />
+              }"   
+            />  
           </div>
           <div class="label-field">
             <div class="col-md-4">
@@ -393,7 +428,7 @@
             id="contConfli"></span> Programas com Conflitos</a></li>
         <li><a data-toggle="pill" href="#menu3"><span
             id="contaUser"></span> Usuários do grupo <span class="grupoSetado"></span></a></li>
-        <li><a data-toggle="pill" href="#home"> Programas do grupo
+        <li><a data-toggle="pill" href="#home"><span id="contaProgramas"></span> Programas do grupo
             <span class="grupoSetado"></span>
         </a></li>
         <li><a data-toggle="pill" href="#menu2">Programas
@@ -518,27 +553,10 @@
 
         <!-- INICIO DA TABELA DE USUARIOS -->
 
-        <div id="menu3" class="tab-pane fade">
-          <table class="table table-striped" id="tabela_usuarios"
-            tablename="tabela_usuarios" noaddbutton="true"
-            style="width: 100%;">
-            <thead>
-              <tr>
-                <th class="col-sm-6">Nome</th>
-                <th class="col-sm-6">Gestor</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="concat" id="concatUser">
-                <td class="col-sm-6"><input class="form-control"
-                  type="text" name="nomeUsuarioAux" id="nomeUsuarioAux" readonly />
-                </td>
-                <td class="col-sm-6"><input type="text"
-                  name="gestorUserAux" id="gestorUserAux" class="form-control"
-                  readonly></td>
-              </tr>
-            </tbody>
-          </table>
+        <div id="menu3" class="tab-pane fade" >
+          <div class="testeColappse">
+          </div>
+
         </div>
 
 

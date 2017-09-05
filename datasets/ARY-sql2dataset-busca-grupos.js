@@ -7,8 +7,7 @@ function createDataset(fields, constraints, sortFields) {
 	log.info("### DATASET ARY-sql2Dataset-busca-grupo");
 	
 	//var cod = findConstraint("cod_usuario",constraints,"");
-	var cod = [];
-	cod = ['AS1','DM1','agp'];
+	var cod = 'AA1'
 	
 	log.info(">>>>>>>>>>>>>>>>>>> cod: "+cod);
 	var arq = arqMarvinLoad("v1", {
@@ -20,7 +19,7 @@ function createDataset(fields, constraints, sortFields) {
 		jndiName: "java:/jdbc/FluigDS",
 		sql: "select * "+
 				" from V_ARY_CONFLITOS_GRUPOS "+
-				"WHERE cd_grupo IN ("+cod+"); ",           
+				"WHERE cd_grupo = '"+cod+"'; ",           
 		log: 1
 	});
 	

@@ -26,7 +26,7 @@ function createDataset(fields, constraints, sortFields) {
          var cod_usuario = dsUsuarios.getValue(i,'cod_usuario');
          log.info("@@@ DENTRO DO DATASET : "+ cod_usuario);
          
-         //if(cod_usuario == 'eloisa' || cod_usuario == 'rlino' || cod_usuario == 'aneves' || cod_usuario == 'msantana' ){
+         if(cod_usuario == 'dfaria' ){
         
          var c1 = DatasetFactory.createConstraint("cod_usuario", cod_usuario, cod_usuario, ConstraintType.MUST);
          var dsUsuariosGrupo = DatasetFactory.getDataset('ARY-sql2dataset-usuario-grupos', null, [c1],null);
@@ -124,7 +124,7 @@ function createDataset(fields, constraints, sortFields) {
             log.info("@@ 9");
          
              log.info("** FIM DO FOR");
-        // }    
+         }    
          
      }
     

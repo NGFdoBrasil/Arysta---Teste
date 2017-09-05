@@ -10,6 +10,7 @@ function createDataset(fields, constraints, sortFields) {
     var cod_grupo = findConstraint("cod_grupo", constraints, "");
     var desc_grupo = findConstraint("desc_grupo", constraints, "");
     var cod_grupo_revisao = findConstraint("cod_grupo_revisao", constraints, "");
+ 
     
     
     log.info(">>>>>>>>> cod_usuario: " + cod_usuario);
@@ -34,9 +35,11 @@ function createDataset(fields, constraints, sortFields) {
         		" where gr.cod_grupo <> '*' AND gr.cod_grupo <> 'GER' AND gr.cod_usuario LIKE '%"+ cod_usuario + "%' ";
     }
     if(cod_grupo != ""){
-        script = "SELECT distinct gr.cod_grupo, gr.desc_grupo, gr.gestor, gest.nome_usuario  AS nome_gestor FROM z_ary_grupos gr " +
+        script = "SELECT distinct gr.cod_grupo, gr.desc_grupo, gr.gestor, gest.nome_usuario  AS nome_gestor, us.cod_usuario FROM z_ary_grupos gr " +
         		" LEFT JOIN z_ary_usuarios gest "+
         			"On gr.gestor = gest.cod_usuario " +
+        		"INNER JOIN z_ary_usuarios us "+
+					"ON us.cod_gestor = gest.cod_usuario " +
         		"where gr.cod_grupo <> '*' AND gr.cod_grupo <> 'GER' AND gr.cod_grupo LIKE '%"+ cod_grupo + "%' ";
     }
     if(desc_grupo != ""){
@@ -46,7 +49,7 @@ function createDataset(fields, constraints, sortFields) {
         		"where gr.cod_grupo <> '*' AND gr.cod_grupo <> 'GER' AND gr.desc_grupo LIKE '%"+ desc_grupo + "%' ";
     }
     if(cod_grupo_revisao != ""){
-    	script = "SELECT distinct gr.cod_grupo, gr.desc_grupo, gr.gestor, gest.nome_usuario  AS nome_gestor, us.nome_usuario  FROM z_ary_grupos gr "+ 
+    	script = "SELECT distinct gr.cod_grupo, gr.desc_grupo, gr.gestor, gest.nome_usuario  AS nome_gestor, us.nome_usuario, us.cod_usuario  FROM z_ary_grupos gr "+ 
 		 "LEFT JOIN z_ary_usuarios gest "+
 			"On gr.gestor = gest.cod_usuario "+
          
